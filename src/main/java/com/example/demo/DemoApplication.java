@@ -19,13 +19,18 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
+		// Logging a simple message
 		logger.info("test");
+
+		// Logging a message with extra values, here you have to use the method "v" that will
+		// log the values structured. 
 		logger.info("another thing, now with extra values", v("amount", 100), v("anotherField", "test"));
 
 		try {
 			throw new IllegalArgumentException("Message of wrong args");
 		} catch (IllegalArgumentException e) {
-			logger.info("another thing, now with extra values", e);
+			// Logging an exception with extra arguments
+			logger.info("another thing, now with extra values", v("test","test"), e);
 		}
 	}
 }

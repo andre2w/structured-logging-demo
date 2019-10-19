@@ -2,7 +2,6 @@
 <configuration>
     <property resource="application.properties" />
     <contextName>${spring.application.name}</contextName>
-    <springProperty scope="context" name="applicationName" source="spring.application.name"/>
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
@@ -28,8 +27,7 @@
                 <threadName>
                     <fieldName>thread</fieldName>
                 </threadName>
-                <mdc />
-
+                <mdc/>
                 <nestedField>
                     <fieldName>${spring.application.name}</fieldName>
                     <providers>
