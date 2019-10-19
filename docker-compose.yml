@@ -1,0 +1,41 @@
+version: "3.3"
+
+services:
+
+  kibana:
+    image: kibana:7.3.2
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    environment:
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+
+
+  elasticsearch:
+    image: elasticsearch:7.3.2
+    container_name: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      discovery.type: single-node
+
+
+  logstash:
+    image: logstash:7.3.2
+    container_name: logstash
+    ports:
+      - "5044:5044"
+      - "9600:9600"
+    volumes:
+      - ./docker-scripts/demoapp.conf:/usr/share/logstash/pipeline/demoapp.conf
+    depends_on:
+      - elasticsearch
+
+
+  transfer_app:
+    build: .
+    container_name: demo
+    volumes:
+      - ./docker-scripts/filebeat.yml:/etc/filebeat/filebeat.yml
+    entrypoint: "tail -f /dev/null"
