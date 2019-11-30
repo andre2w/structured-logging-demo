@@ -1,0 +1,21 @@
+heartbeat.monitors:
+  - type: http
+    urls: ["http://localhost:8080/actuator/health"]
+    schedule: "@every 1s"
+    check.response:
+      status: 200
+      json:
+        - description: Check if status is UP
+          condition:
+            equals:
+              status: "UP"
+
+
+output.elasticsearch:
+  hosts: ["elasticsearch:9200"]
+
+setup.kibana:
+  host: "kibana:5601"
+
+
+setup.template.enabled: true

@@ -6,6 +6,10 @@ COPY docker-scripts/entrypoint.sh /
 RUN curl -L -O curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.3.2-amd64.deb && \
     dpkg -i filebeat-7.3.2-amd64.deb
 
+RUN curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-7.3.2-amd64.deb && \
+    dpkg -i heartbeat-7.3.2-amd64.deb
+
+
 ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["tail", "-f", "/dev/null"]

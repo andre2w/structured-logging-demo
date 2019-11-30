@@ -38,3 +38,4 @@ services:
     container_name: demo
     volumes:
       - ./docker-scripts/filebeat.yml:/etc/filebeat/filebeat.yml
+      - ./docker-scripts/heartbeat.yml:/etc/heartbeat/heartbeat.yml
