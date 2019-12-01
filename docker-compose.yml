@@ -39,3 +39,5 @@ services:
     volumes:
       - ./docker-scripts/filebeat.yml:/etc/filebeat/filebeat.yml
       - ./docker-scripts/heartbeat.yml:/etc/heartbeat/heartbeat.yml
+      - ./target/demo-0.0.1-SNAPSHOT.jar:/demo.jar
+      - ./log:/var/log/app

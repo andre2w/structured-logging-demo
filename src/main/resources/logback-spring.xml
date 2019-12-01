@@ -3,6 +3,7 @@
     <property resource="application.properties" />
     <contextName>${spring.application.name}</contextName>
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
                 <contextName>
@@ -22,7 +23,7 @@
                     <classFieldName>class</classFieldName>
                     <methodFieldName>method</methodFieldName>
                     <lineFieldName>line</lineFieldName>
-                    <fileFieldName>file</fileFieldName>
+
                 </callerData>
                 <threadName>
                     <fieldName>thread</fieldName>
